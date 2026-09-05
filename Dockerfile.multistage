@@ -1,7 +1,7 @@
 # STAGE 1
 
 # Get the BASE IMAGE
-FROM python:3.9-slim AS Builder
+FROM python:3.9-slim AS builder
 
 # Working Directory
 WORKDIR /app
@@ -21,8 +21,8 @@ FROM gcr.io/distroless/python3-debian13
 WORKDIR /app
 
 # Copy the code
-COPY --from=Builder /app/deps /app/deps
-COPY --from=Builder /app .
+COPY --from=builder /app/deps /app/deps
+COPY --from=builder /app .
 
 ENV PYTHONPATH="/app/deps"
 
